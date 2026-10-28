@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --color-background: #0b0b0c;
+  --color-foreground: #ecece8;
+  --color-card: #141416;
+  --color-card-foreground: #ecece8;
+  --color-popover: #1a1a1d;
+  --color-popover-foreground: #ecece8;
+  --color-primary: #e8e4dc;
+  --color-primary-foreground: #141416;
+  --color-secondary: #1c1c1f;
+  --color-secondary-foreground: #ecece8;
+  --color-muted: #1c1c1f;
+  --color-muted-foreground: #8a8a86;
+  --color-accent: #222226;
+  --color-accent-foreground: #ecece8;
+  --color-destructive: #b44545;
+  --color-destructive-foreground: #f4e8e8;
+  --color-border: #2a2a2e;
+  --color-input: #2a2a2e;
+  --color-ring: #e8e4dc;
+  --color-well: #070708;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius: 0.625rem;
+
+  --shadow-border: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 18px 40px -24px rgba(0, 0, 0, 0.7);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #app {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overscroll-behavior: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .studio-shell {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  @media (max-height: 540px) {
+    .studio-dock {
+      gap: 0.5rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

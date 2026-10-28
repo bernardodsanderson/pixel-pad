@@ -1,0 +1,7 @@
+node_modules
+dist
+coverage
+.npm-cache
+package-lock.json
+src/routeTree.gen.ts
+LICENSE

@@ -1,0 +1,54 @@
+[build]
+  command = "npm run build"
+  publish = "dist/client"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Netlify Functions v2 registers its own /api/drawings route; do not rewrite it
+# to /.netlify/functions/* (that path is for the legacy function URL).
+
+# Every app route is prerendered to <route>/index.html. Netlify's pretty URLs
+# normally resolve these, but an explicit rule keeps hard reloads reliable.
+[[redirects]]
+  from = "/login"
+  to = "/login/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/login/"
+  to = "/login/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/reset-password"
+  to = "/reset-password/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/reset-password/"
+  to = "/reset-password/index.html"
+  status = 200
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    cache-control = "public, max-age=31536000, immutable"
+
+# The service worker must be revalidated so a deploy can roll the cache.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    cache-control = "no-cache"
+    Service-Worker-Allowed = "/"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    Content-Security-Policy = "frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"

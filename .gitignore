@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+coverage/
+.tanstack/
+*.tsbuildinfo
+
+# Local environment (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# Provider state
+.netlify/
+.vercel/
+
+# Local tooling and scratch
+.npm-cache/
+.playwright-browsers/
+.netlify-home/
+.netlify-cli/
+.netlify-test-static/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
+*.log
