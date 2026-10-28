@@ -9,7 +9,7 @@ export default defineConfig({
   },
   test: {
     environment: "node",
-    include: ["src/**/*.test.ts", "netlify/**/*.test.ts"],
+    include: ["src/**/*.test.ts", "netlify/**/*.test.ts", "tests/**/*.test.ts"],
     exclude: ["node_modules/**", "dist/**"],
     reporters: ["default"],
     coverage: {

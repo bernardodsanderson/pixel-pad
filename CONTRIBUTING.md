@@ -47,8 +47,11 @@ A pull request is ready when:
 ## What to test
 
 Pure logic lives in `src/lib` and is the easiest place to add coverage. The
-Netlify function tests mock `@netlify/blobs` and `@netlify/identity` in memory,
-so they need no network and no account.
+Netlify function tests in `tests/` mock `@netlify/blobs` and
+`@netlify/identity` in memory, so they need no network and no account.
+
+Keep test files **out of `netlify/functions/`**: Netlify treats every file in
+that directory as a deployable function.
 
 If you change the sprite API, update both the function and
 `src/lib/drawings.ts`, and add tests for the happy path, validation failures,

@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import handler, { config } from "./drawings";
+import handler, { config } from "../netlify/functions/drawings";
 
 type StoredDrawing = {
   id: string;
